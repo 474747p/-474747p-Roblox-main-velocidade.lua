@@ -1,0 +1,24 @@
+-- LocalScript placed in StarterPlayerScripts
+
+-- Ajuste o valor aqui para definir a nova velocidade de corrida
+local velocidadeNova = 150  -- Alterar para a velocidade desejada
+
+-- Referência ao jogador local
+local jogador = game.Players.LocalPlayer
+local personagem = jogador.Character or jogador.CharacterAdded:Wait()
+local humanoide = personagem:WaitForChild("Humanoid")
+
+-- Função para alterar a velocidade do jogador
+local function alterarVelocidade(150)
+    humanoide.WalkSpeed = velocidadeNova
+end
+
+-- Alterar a velocidade ao adicionar o personagem
+alterarVelocidade(150)
+
+-- Monitorar mudanças no personagem e aplicar a velocidade
+jogador.CharacterAdded:Connect(function(char)
+    humanoide = char:WaitForChild("Humanoid")
+    alterarVelocidade()
+end)
+.
